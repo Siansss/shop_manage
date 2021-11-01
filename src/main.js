@@ -15,6 +15,9 @@ import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
+// 引入store
+import store from './store/Vuex'
+
 import axios from 'axios'
 Vue.prototype.$http = axios
 // 配置请求的根路径
@@ -51,5 +54,6 @@ Vue.filter('dataFormat',function(originVal){
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store
 }).$mount('#app')

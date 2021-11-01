@@ -54,6 +54,7 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
+              @click="goEditpage(scope.row.goods_id)"
             ></el-button>
             <el-button
               type="danger"
@@ -108,7 +109,7 @@ export default {
         return this.$message.error('获取商品列表失败！')
       }
       this.$message.success('获取商品列表成功！')
-      console.log(res.data)
+      // console.log(res.data)
       this.goodslist = res.data.goods
       this.total = res.data.total
     },
@@ -143,9 +144,16 @@ export default {
       this.$message.success('删除成功！')
       this.getGoodsList()
     },
-    // 点击按钮，跳转添加商品页码
+    // 点击按钮，跳转添加商品页面
     goAddpage() {
       this.$router.push('/goods/add')
+    },
+    // 点击按钮，跳转编辑商品页面
+    goEditpage(id) {
+      // console.log(id)
+      // this.$store.commit('putId', id)
+      window.sessionStorage.setItem('id', id)
+      this.$router.push('/goods/edit')
     }
   },
   created() {
